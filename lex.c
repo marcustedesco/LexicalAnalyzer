@@ -1,3 +1,8 @@
+// Marcus Tedesco
+// 11/13/2014
+// Comparative Lanaguages
+// Dr. Arthur
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -112,26 +117,21 @@ int C(){
 
 	if(token == '<'){
 		//bitwise shift secondToken <<
-		printf("BITEWISE LEFT SHIFT: %c\n", token);
 		return (C() << 1) & 15; //0xf;
 	}else if(token == '>'){
 		//bitwise shift secondToken >>
 		return C() >> 1;
 	}else if(token == '~'){
 		//bitwise not secondToken ~
-		printf("BITEWISE NOT: %c\n", token);
 		return (~C()) & 15;
 	}else if(token == '('){
 		int val = E();
 		next();
 		return val; 
 	}else{
-		printf("TOKEN: %c\n", token);
 		//return the token hex value as int
 		char temp[1];
 		temp[0] = token;
-		printf("TEMP 0: %c\n", temp[0]);
-		printf("TOKEN int: %d\n", (int)strtol(temp, NULL, 16) & 15);
 		return (int)(strtol(temp, NULL, 16) & 15); //0xf;
 	}
 }
